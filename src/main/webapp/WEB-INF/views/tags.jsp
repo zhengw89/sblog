@@ -13,7 +13,7 @@
 		<ul>
 			<c:forEach items="${tagSummarys}" var="tagSummary">
 				<li>
-					<a class="btn btn-default" href="<spring:url value="/tag/${tagSummary.tagName}" />">${tagSummary.tagName}</a>
+					<a class="btn btn-default" href="<spring:url value="/tag/${tagSummary.tagName}" />">${tagSummary.tagName} -- ${tagSummary.postCount}</a>
 				</li>
 			</c:forEach>
 		</ul>

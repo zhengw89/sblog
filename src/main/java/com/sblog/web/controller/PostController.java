@@ -23,8 +23,8 @@ public class PostController extends PublicController {
 	public ModelAndView getIndexView() {
 		ModelAndView mv = new ModelAndView("index");
 		
-//		List<Post> posts = this.postService.getLatestPublishedPosts(DEFAULT_LATEST_COUNT);
-//		mv.addObject("posts", posts);
+		List<Post> posts = this.postService.getLatestPublishedPosts(DEFAULT_LATEST_COUNT);
+		mv.addObject("posts", posts);
 		
 		return mv;
 	}
@@ -33,8 +33,8 @@ public class PostController extends PublicController {
 	public ModelAndView getPostsView() {
 		ModelAndView mv = new ModelAndView("posts");
 		
-//		List<Post> posts = this.postService.getAllPublishedPosts();
-//		mv.addObject("posts", posts);
+		List<Post> posts = this.postService.getAllPublishedPosts();
+		mv.addObject("posts", posts);
 		
 		return mv;
 	}

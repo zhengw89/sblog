@@ -11,7 +11,7 @@
         <property name="postTitle" column="POST_Title" type="string" length="100"></property>
         <property name="postStatus" column="POST_Stauts">
         	<type name="org.hibernate.type.EnumType">
-        		<param name="enumClass">com.blog.beans.PostStatus</param>
+        		<param name="enumClass">com.sblog.beans.PostStatus</param>
         	</type>
         </property>
         <property name="postPublishTime" column="POST_PublishTime" type="timestamp"></property>
