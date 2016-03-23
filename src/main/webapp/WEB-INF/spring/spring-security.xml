@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:security="http://www.springframework.org/schema/security"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+            http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+            http://www.springframework.org/schema/security   
+            http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+            
+    <security:http auto-config="true">
+    	<!-- URL权限 -->
+    	<security:intercept-url pattern="/" access="permitAll"/>
+    	<security:intercept-url pattern="/style/**" access="permitAll"/>
+    	<security:intercept-url pattern="/script/**" access="permitAll"/>
+    	<security:intercept-url pattern="/login" access="permitAll"/>
+    	<security:intercept-url pattern="/backyard" access="hasRole('ROLE_ADMIN')"/>
+    	<security:intercept-url pattern="/backyard/**" access="hasRole('ROLE_ADMIN')"/>
+    	
+    	<!-- 登录 -->
+    	<security:form-login login-page="/login"
+    		default-target-url = "/backyard"/>
+    	
+    	<!-- 登出 -->
+    	<security:logout logout-url="/logout" 
+    		logout-success-url="/" 
+    		delete-cookies="JSESSIONID"/>
+    </security:http>
+    
+    <security:authentication-manager>
+    	<!-- 自定义身份验证 -->
+		<security:authentication-provider ref="blogAuthenticationProvider">
+		</security:authentication-provider>
+   </security:authentication-manager>
+
+</beans>

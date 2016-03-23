@@ -35,6 +35,26 @@
 	   <version>4.2.4.RELEASE</version>
 	</dependency>
 	<dependency>
+      <groupId>org.springframework.security</groupId>  
+  	  <artifactId>spring-security-core</artifactId>  
+  	  <version>4.0.4.RELEASE</version>
+    </dependency>
+    <dependency> 
+	   <groupId>org.springframework.security</groupId>
+	   <artifactId>spring-security-config</artifactId>
+	   <version>4.0.4.RELEASE</version>
+	</dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>  
+  	  <artifactId>spring-security-web</artifactId>  
+  	  <version>4.0.4.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>  
+  	  <artifactId>spring-security-taglibs</artifactId>  
+  	  <version>4.0.4.RELEASE</version>
+    </dependency>
+	<dependency>
     	<groupId>javax.validation</groupId>
     	<artifactId>validation-api</artifactId>
     	<version>1.1.0.Final</version>
