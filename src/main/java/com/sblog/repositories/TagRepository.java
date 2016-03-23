@@ -2,6 +2,7 @@ package com.sblog.repositories;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
@@ -28,8 +29,11 @@ public class TagRepository extends BaseRepository<Tag> implements ITagRepository
 	}
 
 	public Tag getByName(String name) {
-		List<Tag> tags = (List<Tag>)getHibernateTemplate().find("select * from Tag where name = ?", name);
-		if(tags.isEmpty())return null;
+		Query query = super.createHibernateQuery("from Tag where name = :name")
+							.setParameter("name", name);
+		
+		List<Tag> tags = query.list();
+		if(tags.isEmpty()) return null;
 		return tags.get(0);
 	}
 

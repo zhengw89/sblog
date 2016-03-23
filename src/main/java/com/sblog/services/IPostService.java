@@ -11,4 +11,6 @@ public interface IPostService {
 	List<Post> getAllPublishedPosts();
 	
 	Post getPostById(String postId);
+	
+	List<Post> getPublishedPostsByTag(String tagId);
 }

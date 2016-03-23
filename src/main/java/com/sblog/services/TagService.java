@@ -29,5 +29,10 @@ public class TagService extends BaseService implements ITagService {
 	public List<Tag> getAllTags() {
 		return this.tagRepository.getAllTag();
 	}
+
+	public Tag getByTagName(String name) {
+		if(name == null) return null;
+		return this.tagRepository.getByName(name);
+	}
 	
 }

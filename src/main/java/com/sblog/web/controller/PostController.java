@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,6 +36,24 @@ public class PostController extends PublicController {
 		
 		List<Post> posts = this.postService.getAllPublishedPosts();
 		mv.addObject("posts", posts);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/post/{postId}", method = RequestMethod.GET)
+	public ModelAndView getPostView(@PathVariable String postId) {
+		ModelAndView mv = new ModelAndView();
+		
+		Post post = this.postService.getPostById(postId);
+		if(post == null){
+			mv.setViewName("404");
+		}else {
+			mv.setViewName("post");
+			
+			mv.addObject("title", post.getTitle());
+			mv.addObject("publishTime", post.getPublishTime());
+			mv.addObject("content", post.getRenderedContent());
+		}
 		
 		return mv;
 	}

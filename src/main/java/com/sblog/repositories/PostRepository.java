@@ -38,4 +38,19 @@ public class PostRepository extends BaseRepository<Post> implements IPostReposit
 		return query.list();
 	}
 
+	public List<Post> getByTag(String tagId, PostStatus status) {
+		StringBuilder hqSb = new StringBuilder();
+		hqSb.append("select p from Post p, PostTag pt ");
+		hqSb.append("where pt.tagId = :tagId ");
+		hqSb.append("and p.status = :status ");
+		hqSb.append("and p.id = pt.postId ");
+		hqSb.append("order by p.publishTime, p.createTime");
+		
+		Query query = super.createHibernateQuery(hqSb.toString())
+							.setParameter("tagId", tagId)
+							.setParameter("status", status);
+		
+		return query.list();
+	}
+
 }
