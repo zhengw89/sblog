@@ -18,5 +18,4 @@ public class TagService extends BaseService implements ITagService {
 		return this.tagRepository.getAllTag();
 	}
 	
-	
 }

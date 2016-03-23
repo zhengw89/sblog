@@ -64,6 +64,11 @@
       <artifactId>hibernate-c3p0</artifactId>
       <version>5.1.0.Final</version>
    	</dependency>
+   	<dependency>
+      <groupId>org.sitemesh</groupId>
+      <artifactId>sitemesh</artifactId>
+      <version>3.0.0</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>sblog</finalName>

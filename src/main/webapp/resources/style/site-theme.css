@@ -1,0 +1,13 @@
+
+.post-item {
+	text-align: center;
+	width: 80%;
+	margin: 10px auto;
+	padding: 10px 20px;
+}
+
+.post-item .post-date {
+	text-align: center;
+	color: #888;
+	font-size: 0.9em;
+}
