@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+ 
+<hibernate-mapping> 
+    <class name="com.sblog.beans.User" table="t_user"> 
+        <id name="id" column="USER_ID" type="string" length="36"></id> 
+        <property name="displayName" column="DisplayName" type="string" length="100"></property>
+        <property name="password" column="Password" type="string" length="36"></property>
+        <property name="createTime" column="CreateTime" type="timestamp"></property>
+        <property name="updateTime" column="UpdateTime" type="timestamp"></property>
+    </class>
+</hibernate-mapping>
