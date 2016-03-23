@@ -24,7 +24,7 @@ public class TagRepository extends BaseRepository<Tag> implements ITagRepository
 	}
 
 	public List<Tag> getAllTag() {
-		return (List<Tag>)getHibernateTemplate().find("from Tag", null);
+		return super.createHibernateQuery("from Tag order by name").list();
 	}
 
 	public Tag getByName(String name) {
