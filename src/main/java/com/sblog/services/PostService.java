@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sblog.beans.Post;
 import com.sblog.repositories.IPostRepository;
 
 @Service("postService")
+@Transactional
 public class PostService extends BaseService implements IPostService {
 	
 	@Autowired

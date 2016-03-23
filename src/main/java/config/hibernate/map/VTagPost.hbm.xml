@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+ 
+<hibernate-mapping> 
+    <class name="com.sblog.beans.VTagPost" table="v_tag_post"> 
+        <id name="tagId" column="TAG_ID" type="string" length="36"></id> 
+        <property name="tagName" column="TAG_Name" type="string" length="100"></property>
+        <property name="postId" column="POST_ID" type="string" length="36"></property> 
+        <property name="postTitle" column="POST_Title" type="string" length="100"></property>
+        <property name="postStatus" column="POST_Stauts">
+        	<type name="org.hibernate.type.EnumType">
+        		<param name="enumClass">com.blog.beans.PostStatus</param>
+        	</type>
+        </property>
+        <property name="postPublishTime" column="POST_PublishTime" type="timestamp"></property>
+    </class>
+</hibernate-mapping>

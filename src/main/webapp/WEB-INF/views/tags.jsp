@@ -6,18 +6,17 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Index</title>
+	<title>Tags</title>
 </head>
 <body>
 	<div>
-		<c:forEach items="${posts}" var="post">
-			<a href="<spring:url value="/post/${post.id}" />">
-				<div class="post-item">
-					<h2>${post.title}</h2>
-					<div class="post-date">${post.publishTime}</div>
-				</div>
-			</a>
-		</c:forEach>
+		<ul>
+			<c:forEach items="${tagSummarys}" var="tagSummary">
+				<li>
+					<a class="btn btn-default" href="<spring:url value="/tag/${tagSummary.tagName}" />">${tagSummary.tagName}</a>
+				</li>
+			</c:forEach>
+		</ul>
 	</div>
 </body>
 </html>
