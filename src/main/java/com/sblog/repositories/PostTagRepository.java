@@ -45,4 +45,11 @@ public class PostTagRepository extends BaseRepository<PostTag> implements IPostT
 		return true;
 	}
 
+	public boolean deleteByPost(String postId) {
+		Query query = super.createHibernateQuery("delete from PostTag where postId = :postId");
+		query.setParameter("postId", postId);
+		query.executeUpdate();
+		return true;
+	}
+
 }

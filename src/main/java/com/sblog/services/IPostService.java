@@ -16,5 +16,9 @@ public interface IPostService {
 	
 	List<Post> getPublishedPostsByTag(String tagId);
 	
-	boolean CreatePost(String title, String content, String[] tagIds);
+	boolean createPost(String title, String content, String[] tagIds);
+	
+	boolean editPost(String id, String title, String content, String[] tagIds);
+	
+	boolean deletePost(String postId);
 }

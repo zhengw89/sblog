@@ -6,8 +6,14 @@ import com.sblog.beans.Post;
 import com.sblog.beans.PostStatus;
 
 public interface IPostRepository {
+	
+	boolean exists(String id);
 
 	boolean create(Post post);
+	
+	boolean update(Post post);
+	
+	boolean delete(String id);
 	
 	Post getByPostId(String postId);
 	

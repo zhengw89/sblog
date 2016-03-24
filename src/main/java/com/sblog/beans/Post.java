@@ -1,6 +1,7 @@
 package com.sblog.beans;
 
 import java.util.Date;
+import java.util.List;
 
 public class Post extends BaseBean{
 
@@ -15,6 +16,8 @@ public class Post extends BaseBean{
 	private String renderedContent;
 	
 	private Date publishTime;
+	
+	private List<Tag> tags;
 
 	public String getId() {
 		return id;
@@ -62,6 +65,14 @@ public class Post extends BaseBean{
 
 	public void setPublishTime(Date publishTime) {
 		this.publishTime = publishTime;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
 	}
 
 }

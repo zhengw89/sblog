@@ -12,6 +12,8 @@ public interface IPostTagRepository {
 	
 	boolean deleteByTag(String tagId);
 	
+	boolean deleteByPost(String postId);
+	
 	List<String> getPostIdsByTagId(String tagId);
 	
 	int getPostCountByTagId(String tagId);

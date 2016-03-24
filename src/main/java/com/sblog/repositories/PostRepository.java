@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
 
 import com.sblog.beans.Post;
@@ -16,6 +17,12 @@ public class PostRepository extends BaseRepository<Post> implements IPostReposit
 	@Autowired
 	protected PostRepository(SessionFactory sessionFactory) {
 		super(sessionFactory);
+	}
+	
+	public boolean exists(String id) {
+		return DataAccessUtils.intResult(
+				getHibernateTemplate().find("select count(*) from Post where id = ?", id)
+			) > 0;
 	}
 
 	public Post getByPostId(String postId) {

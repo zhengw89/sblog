@@ -43,4 +43,17 @@ public class TagRepository extends BaseRepository<Tag> implements ITagRepository
 		return tags.get(0);
 	}
 
+	public List<Tag> getByPost(String postId) {
+		StringBuilder hqSb = new StringBuilder();
+		hqSb.append("select t from Tag t, PostTag pt, Post p ");
+		hqSb.append("where p.id = :postId ");
+		hqSb.append("and t.id = pt.tagId ");
+		hqSb.append("and pt.postId = p.id");
+		
+		Query query = super.createHibernateQuery(hqSb.toString())
+							.setParameter("postId", postId);
+		
+		return query.list();
+	}
+
 }

@@ -21,7 +21,30 @@
 				<tr>
 					<td>${post.title}</td>
 					<td>
-						<a href="#">删除</a>
+						<a href="<spring:url value="/backyard/post/edit/${post.id}" />">Edit</a>
+					
+						<a href="#" data-toggle="modal" data-target="#delete-${post.id}">Delete</a>
+						<div id="delete-${post.id}" class="modal fade" tabindex="-1" role="dialog">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<form method="POST" action="<spring:url value="/backyard/post/delete" />">
+										<input name="postId" type="hidden" value="${post.id}" />
+										<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											<h4 class="modal-title">Delete Post</h4>
+										</div>
+										<div class="modal-body">
+											<em>delete post</em> <strong>${post.title}</strong> ？
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+											<button class="btn btn-primary" type="submit">OK</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
 					</td>
 				</tr>
 			</c:forEach>

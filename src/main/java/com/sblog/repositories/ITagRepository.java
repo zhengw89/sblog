@@ -17,4 +17,6 @@ public interface ITagRepository {
 	List<Tag> getAllTag();
 	
 	Tag getByName(String name);
+	
+	List<Tag> getByPost(String postId);
 }
