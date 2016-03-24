@@ -2,12 +2,14 @@ package com.sblog.repositories;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
 
 import com.sblog.beans.PostTag;
+import com.sun.xml.internal.rngom.parse.host.Base;
 
 @Repository("postTagRepository")
 public class PostTagRepository extends BaseRepository<PostTag> implements IPostTagRepository {
@@ -34,6 +36,13 @@ public class PostTagRepository extends BaseRepository<PostTag> implements IPostT
 					getHibernateTemplate()
 						.find("select count(*) from PostTag where tagId = ?", tagId)
 				);
+	}
+
+	public boolean deleteByTag(String tagId) {
+		Query query = super.createHibernateQuery("delete from PostTag where tagId = :tagId");
+		query.setParameter("tagId", tagId);
+		query.executeUpdate();
+		return true;
 	}
 
 }

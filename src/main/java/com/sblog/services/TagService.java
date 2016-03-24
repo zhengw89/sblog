@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sblog.beans.PostStatus;
 import com.sblog.beans.Tag;
 import com.sblog.beans.TagSummary;
+import com.sblog.repositories.IPostTagRepository;
 import com.sblog.repositories.ITagRepository;
 import com.sblog.repositories.IVTagPostRepository;
 
@@ -18,6 +19,9 @@ public class TagService extends BaseService implements ITagService {
 
 	@Autowired
 	private ITagRepository tagRepository;
+	
+	@Autowired
+	private IPostTagRepository postTagRepository;
 	
 	@Autowired
 	private IVTagPostRepository vTagPostRepository;
@@ -39,6 +43,16 @@ public class TagService extends BaseService implements ITagService {
 		if(name == null) return false;
 		if(this.tagRepository.exists(name)) return true;
 		return this.tagRepository.create(new Tag(name));
+	}
+
+	public boolean deleteTag(String tagId) {
+		if(tagId == null) return false;
+		if(!this.tagRepository.existsById(tagId)) return true;
+		
+		this.tagRepository.delete(tagId);
+		this.postTagRepository.deleteByTag(tagId);
+		
+		return true;
 	}
 	
 }

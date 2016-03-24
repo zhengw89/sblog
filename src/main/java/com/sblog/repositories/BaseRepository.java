@@ -34,6 +34,10 @@ public abstract class BaseRepository<T> extends HibernateDaoSupport {
 		return true;
 	}
 	
+	public boolean delete(String id) {
+		return this.delete(this.getByKey(id));
+	}
+	
 	public boolean delete(T obj){
 		getHibernateTemplate().delete(obj);
 		return true;

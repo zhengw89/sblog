@@ -49,9 +49,9 @@ public class BackyardPostController extends PrivateController {
 	public ModelAndView createBlog(@Valid @ModelAttribute("post") CreatePostModel model,
 			BindingResult bindingResult){
 		
-		ModelAndView mv = super.getModelAndViewWithAuthentication();
+		ModelAndView mv = new ModelAndView();
 		if(bindingResult.hasErrors()){
-//			mv = super.setAuthentication(mv);
+			super.setAuthentication(mv);
 			mv.setViewName("/backyard/createPost");
 		} else {
 			this.postService.CreatePost(model.getTitle(), model.getContent(), model.getTags());

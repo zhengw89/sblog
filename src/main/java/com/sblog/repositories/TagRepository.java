@@ -17,6 +17,12 @@ public class TagRepository extends BaseRepository<Tag> implements ITagRepository
 	protected TagRepository(SessionFactory sessionFactory) {
 		super(sessionFactory);
 	}
+	
+	public boolean existsById(String id){
+		return DataAccessUtils.intResult(
+				getHibernateTemplate().find("select count(*) from Tag where id = ?", id)
+			) > 0;
+	}
 
 	public boolean exists(String name) {
 		return DataAccessUtils.intResult(

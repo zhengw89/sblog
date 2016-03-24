@@ -14,4 +14,6 @@ public interface ITagService {
 	List<Tag> getAllTags();
 	
 	boolean createTag(String name);
+	
+	boolean deleteTag(String tagId);
 }

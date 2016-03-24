@@ -10,6 +10,8 @@ public interface IPostTagRepository {
 	
 	boolean create(PostTag postTag);
 	
+	boolean deleteByTag(String tagId);
+	
 	List<String> getPostIdsByTagId(String tagId);
 	
 	int getPostCountByTagId(String tagId);

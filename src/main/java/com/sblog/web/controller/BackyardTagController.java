@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sblog.web.viewmodel.CreateTagModel;
@@ -44,14 +45,22 @@ public class BackyardTagController extends PrivateController {
 	public ModelAndView createTag(@Valid @ModelAttribute("tag") CreateTagModel model,
 			BindingResult bindingResult) {
 		
-		ModelAndView mv = super.getModelAndViewWithAuthentication();
+		ModelAndView mv = new ModelAndView();
 		if(bindingResult.hasErrors()){
+			super.setAuthentication(mv);
 			mv.setViewName("/backyard/createTag");
 		} else {
 			this.tagService.createTag(model.getTag());
 			mv.setViewName("redirect:/backyard/tags");
 		}
 		return mv;
-		
+	}
+	
+	@RequestMapping(value = "/tag/delete", method = RequestMethod.POST)
+	public ModelAndView deleteTag(@RequestParam("tagId") String tagId) {
+		if(tagId != null){
+			this.tagService.deleteTag(tagId);
+		}
+		return super.getModelAndViewWithAuthentication("redirect:/backyard/tags");
 	}
 }
