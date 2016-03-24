@@ -34,5 +34,11 @@ public class TagService extends BaseService implements ITagService {
 		if(name == null) return null;
 		return this.tagRepository.getByName(name);
 	}
+
+	public boolean createTag(String name) {
+		if(name == null) return false;
+		if(this.tagRepository.exists(name)) return true;
+		return this.tagRepository.create(new Tag(name));
+	}
 	
 }

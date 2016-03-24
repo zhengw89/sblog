@@ -11,9 +11,11 @@ public interface IPostRepository {
 	
 	Post getByPostId(String postId);
 	
-	List<Post> getLatestPublished(int count);
+	List<Post> get();
 	
-	List<Post> getAllPublishedPosts();
+	List<Post> get(PostStatus status);
+	
+	List<Post> getLatest(PostStatus status, int count);
 	
 	List<Post> getByTag(String tagId, PostStatus status);
 }

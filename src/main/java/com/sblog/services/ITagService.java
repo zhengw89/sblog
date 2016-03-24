@@ -12,4 +12,6 @@ public interface ITagService {
 	List<TagSummary> getAllTagSummarys();
 
 	List<Tag> getAllTags();
+	
+	boolean createTag(String name);
 }

@@ -8,9 +8,13 @@ public interface IPostService {
 
 	List<Post> getLatestPublishedPosts(int count);
 	
+	List<Post> getAll();
+	
 	List<Post> getAllPublishedPosts();
 	
 	Post getPostById(String postId);
 	
 	List<Post> getPublishedPostsByTag(String tagId);
+	
+	boolean CreatePost(String title, String content, String[] tagIds);
 }

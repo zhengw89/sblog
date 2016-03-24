@@ -22,19 +22,13 @@ public class PostRepository extends BaseRepository<Post> implements IPostReposit
 		return super.getByKey(postId);
 	}
 
-	public List<Post> getLatestPublished(int count) {
+	public List<Post> getLatest(PostStatus status, int count) {
 		
 		Query query = super.createHibernateQuery("from Post where status = :status order by publishTime desc")
-							.setParameter("status", PostStatus.Published);
+							.setParameter("status", status);
 		query.setFirstResult(0); 
 		query.setMaxResults(count);
 		
-		return query.list();
-	}
-
-	public List<Post> getAllPublishedPosts() {
-		Query query = super.createHibernateQuery("from Post where status = :status order by publishTime desc")
-							.setParameter("status", PostStatus.Published);
 		return query.list();
 	}
 
@@ -49,6 +43,26 @@ public class PostRepository extends BaseRepository<Post> implements IPostReposit
 		Query query = super.createHibernateQuery(hqSb.toString())
 							.setParameter("tagId", tagId)
 							.setParameter("status", status);
+		
+		return query.list();
+	}
+
+	public List<Post> get() {
+		return this.get(null);
+	}
+	
+	public List<Post> get(PostStatus status) {
+		StringBuilder hqSb = new StringBuilder();
+		hqSb.append("from Post ");
+		if(status != null){
+			hqSb.append("where status = :status ");
+		}
+		hqSb.append("order by publishTime, createTime");
+		
+		Query query = super.createHibernateQuery(hqSb.toString());
+		if(status != null){
+			query = query.setParameter("status", status);
+		}
 		
 		return query.list();
 	}
