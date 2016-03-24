@@ -7,21 +7,22 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Index</title>
+	<title>Blog</title>
 </head>
 <body>
-	<div>
-		<h2 class="post-item">Latest Posts</h2>
-		<c:forEach items="${posts}" var="post">
+	<h2 class="post-item">Latest Posts</h2>
+	<c:forEach items="${posts}" var="post">
+		<div class="post-item">
 			<a href="<spring:url value="/post/${post.id}" />">
-				<div class="post-item">
-					<h2>${post.title}</h2>
-					<div class="post-date">
-						<fmt:formatDate pattern="yyyy-MM-dd" value="${post.publishTime}" />
-					</div>
+				<h2>${post.title}</h2>
+				<div class="post-date">
+					<fmt:formatDate pattern="yyyy-MM-dd" value="${post.publishTime}" />
 				</div>
 			</a>
-		</c:forEach>
+		</div>
+	</c:forEach>
+	<div class="loadmore">
+		<a href="<spring:url value="/posts" />" class="btn btn-default">More</a>
 	</div>
 </body>
 </html>

@@ -9,11 +9,14 @@
 	<title>Tags</title>
 </head>
 <body>
-	<div>
+	<div class="tag-title">
+		<h2>Tags</h2>
+	</div>
+	<div class="tag-wrapper">
 		<ul>
 			<c:forEach items="${tagSummarys}" var="tagSummary">
 				<li>
-					<a class="btn btn-default" href="<spring:url value="/tag/${tagSummary.tagName}" />">${tagSummary.tagName} -- ${tagSummary.postCount}</a>
+					<a class="btn btn-default" href="<spring:url value="/tag/${tagSummary.tagName}" />">${tagSummary.tagName}(${tagSummary.postCount})</a>
 				</li>
 			</c:forEach>
 		</ul>

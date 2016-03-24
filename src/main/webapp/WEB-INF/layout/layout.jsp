@@ -11,14 +11,12 @@
 	
 	<spring:url value="/style/bootstrap/css/bootstrap.min.css" var="css_bs"/>
 	<spring:url value="/style/bootstrap/css/bootstrap-theme.min.css" var="css_bs_theme" />
-	<spring:url value="/style/login.css" var="css_login"/>
 	<spring:url value="/style/site-theme.css" var="css_siteTheme"/>
 	<spring:url value="/script/jquery-1.11.3.min.js" var="js_jq"/>
 	<spring:url value="/script/bootstrap/bootstrap.min.js" var="js_bs"/>
 	
 	<link href="${css_bs}" rel="stylesheet"/>
 	<link href="${css_bs_theme}" rel="stylesheet" />
-	<link href="${css_login}" rel="stylesheet" />
 	<link href="${css_siteTheme}" rel="stylesheet" />
 	<script src="${js_jq}" type="text/javascript"></script>
 	<script src="${js_bs}" type="text/javascript"></script>
@@ -43,12 +41,16 @@
 	</div>
 	
 	<div class="container main-container">
+		<hr/>
 		<sitemesh:write property='body' />
 	</div>
 	
 	<div class="container">
+		<hr/>
 		<div class="footer">
-			<div class="footer-wrapper"></div>
+			<div class="footer-wrapper">
+				Blog system
+			</div>
 		</div>
 	</div>
 

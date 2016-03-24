@@ -1,4 +1,18 @@
+/* main */
 
+.navbar {
+	margin-bottom: 0px;
+}
+
+.main-container {
+	min-height: 300px;
+}
+
+.footer-wrapper {
+	text-align: center;
+}
+
+/* posts */
 .post-item {
 	text-align: center;
 	width: 80%;
@@ -6,8 +20,31 @@
 	padding: 10px 20px;
 }
 
+.post-item a:hover {
+	text-decoration: none;
+}
+
 .post-item .post-date {
 	text-align: center;
 	color: #888;
 	font-size: 0.9em;
+}
+
+.loadmore {
+	text-align: center;
+	margin: 10px auto;
+}
+
+/* tags */
+.tag-title {
+	text-align: center;
+}
+
+.tag-wrapper {
+	margin: 20px 50px;
+}
+
+.tag-wrapper li {
+	display: inline-block;
+	margin: 5px 10px;
 }

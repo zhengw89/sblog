@@ -10,17 +10,19 @@
 	<title>${tagName}</title>
 </head>
 <body>
-	<h2>${tagName}</h2>
+	<div class="tag-title">
+		<h2>${tagName}</h2>
+	</div>
 	
 	<c:forEach items="${posts}" var="post">
-			<a href="<spring:url value="/post/${post.id}" />">
-				<div class="post-item">
+			<div class="post-item">
+				<a href="<spring:url value="/post/${post.id}" />">
 					<h2>${post.title}</h2>
 					<div class="post-date">
 						<fmt:formatDate pattern="yyyy-MM-dd" value="${post.publishTime}" />
 					</div>
-				</div>
-			</a>
+				</a>
+			</div>
 		</c:forEach>
 </body>
 </html>
