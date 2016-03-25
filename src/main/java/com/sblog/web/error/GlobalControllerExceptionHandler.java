@@ -15,10 +15,10 @@ public class GlobalControllerExceptionHandler {
             return mv;
     }
 	
-	@ExceptionHandler(Exception.class)
-	public ModelAndView handleError500(Exception e) {
-		ModelAndView mv = new ModelAndView("500");
-		mv.addObject("ex", e);
-		return mv;
-	}
+//	@ExceptionHandler(Exception.class)
+//	public ModelAndView handleError500(Exception e) {
+//		ModelAndView mv = new ModelAndView("500");
+//		mv.addObject("ex", e);
+//		return mv;
+//	}
 }

@@ -6,6 +6,9 @@ import java.util.UUID;
 
 import org.pegdown.PegDownProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,14 +33,17 @@ public class PostService extends BaseService implements IPostService {
 	@Autowired
 	private ITagRepository tagRepository;
 
+	@Cacheable(value = POST_CACHE_NAME, key = "#root.methodName")
 	public List<Post> getLatestPublishedPosts(int count) {
 		return this.postRepository.getLatest(PostStatus.Published, count);
 	}
 
+	@Cacheable(value = POST_CACHE_NAME, key = "#root.methodName")
 	public List<Post> getAllPublishedPosts() {
 		return this.postRepository.get(PostStatus.Published);
 	}
 
+	@Cacheable(value = POST_CACHE_NAME, key = "#postId")
 	public Post getPostById(String postId) {
 		if(postId == null) return null;
 		Post post =  this.postRepository.getByPostId(postId);
@@ -50,11 +56,16 @@ public class PostService extends BaseService implements IPostService {
 		return post;
 	}
 
+	@Cacheable(value = POST_CACHE_NAME, key = "#tagId")
 	public List<Post> getPublishedPostsByTag(String tagId) {
 		if(tagId == null) return null;
 		return this.postRepository.getByTag(tagId, PostStatus.Published);
 	}
 
+	@Caching(evict = {
+			@CacheEvict(value = POST_CACHE_NAME, allEntries = true),
+			@CacheEvict(value = ITagService.TAG_CACHE_NAME, allEntries = true)
+	})
 	public boolean createPost(String title, String content, String[] tagIds) {
 		if(title == null || content == null) return false;
 		
@@ -78,10 +89,15 @@ public class PostService extends BaseService implements IPostService {
 		return this.postRepository.create(post);
 	}
 
+	@Cacheable(value = POST_CACHE_NAME, key = "#root.methodName")
 	public List<Post> getAll() {
 		return this.postRepository.get();
 	}
 	
+	@Caching(evict = {
+			@CacheEvict(value = POST_CACHE_NAME, allEntries = true),
+			@CacheEvict(value = ITagService.TAG_CACHE_NAME, allEntries = true)
+	})
 	public boolean editPost(String id, String title, String content, String[] tagIds){
 		if(id == null || title == null || content == null)return false;
 		
@@ -101,6 +117,10 @@ public class PostService extends BaseService implements IPostService {
 		return this.postRepository.update(post);
 	}
 
+	@Caching(evict = {
+			@CacheEvict(value = POST_CACHE_NAME, allEntries = true),
+			@CacheEvict(value = ITagService.TAG_CACHE_NAME, allEntries = true)
+	})
 	public boolean deletePost(String postId) {
 		if(postId == null) return false;
 		if(!this.postRepository.exists(postId)) return true;

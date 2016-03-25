@@ -5,6 +5,8 @@ import java.util.List;
 import com.sblog.beans.Post;
 
 public interface IPostService {
+	
+	public static final String POST_CACHE_NAME = "post.cache";
 
 	List<Post> getLatestPublishedPosts(int count);
 	

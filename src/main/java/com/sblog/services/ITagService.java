@@ -7,6 +7,8 @@ import com.sblog.beans.TagSummary;
 
 public interface ITagService {
 	
+	public static final String TAG_CACHE_NAME = "tag.cache";
+	
 	Tag getByTagName(String name);
 	
 	List<TagSummary> getAllTagSummarys();

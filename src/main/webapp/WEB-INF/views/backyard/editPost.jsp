@@ -51,7 +51,7 @@
 		</div>
 		<div class="form-group">
             <div class="col-sm-2 control-label">
-                <button class="btn btn-primary" type="submit">Create</button>
+                <button class="btn btn-primary" type="submit">Edit</button>
             </div>
         </div>
 	</form:form>
