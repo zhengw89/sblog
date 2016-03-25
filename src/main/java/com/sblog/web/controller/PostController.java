@@ -53,6 +53,7 @@ public class PostController extends PublicController {
 			mv.addObject("title", post.getTitle());
 			mv.addObject("publishTime", post.getPublishTime());
 			mv.addObject("content", post.getRenderedContent());
+			mv.addObject("tags", post.getTags());
 		}
 		
 		return mv;
