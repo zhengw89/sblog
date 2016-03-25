@@ -10,15 +10,17 @@
 	<title>${title}</title>
 </head>
 <body>
-	<h2>${title}</h2>
-	<div>
-		<fmt:formatDate pattern="yyyy-MM-dd" value="${publishTime}" />
+	<div class="post-header">
+		<h1>${title}</h1>
+		<p><fmt:formatDate pattern="yyyy-MM-dd" value="${publishTime}" /></p>
 	</div>
-	<div>
+	
+	<div class="post-content">
 		${content}
 	</div>
-	<div>
+	<div class="post-tag-wrapper">
 		<ul>
+			<li>Tags:</li>
 			<c:forEach items="${tags}" var="tag">
 				<li>
 					<a class="btn btn-default btn-xs" href="<spring:url value="/tag/${tag.name}" />">${tag.name}</a>

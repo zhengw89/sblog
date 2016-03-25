@@ -1,10 +1,9 @@
+/* Navigation */
+
 /* main */
 
-.navbar {
-	margin-bottom: 0px;
-}
-
 .main-container {
+	margin-top: 10px;
 	min-height: 300px;
 }
 
@@ -33,6 +32,23 @@
 .loadmore {
 	text-align: center;
 	margin: 10px auto;
+}
+
+.post-header {
+	text-align: center;
+}
+
+.post-content {
+	padding: 10px 100px;
+}
+
+.post-tag-wrapper {
+	text-align: center;
+}
+
+.post-tag-wrapper li {
+	display: inline-block;
+	margin: 5px 5px;
 }
 
 /* tags */
