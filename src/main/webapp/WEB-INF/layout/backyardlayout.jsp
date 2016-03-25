@@ -36,6 +36,12 @@
                     <li><a href="<spring:url value="/backyard/tags"/>">Tags</a></li>
                     <li><a href="<spring:url value="/backyard/posts"/>">Posts</a></li>
                     <li>
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+				          <ul class="dropdown-menu">
+				            <li><a href="<spring:url value="/backyard/changePassword"/>">Change password</a></li>
+				          </ul>
+                    </li>
+                    <li>
 						<form class="logout-form" action="<spring:url value="/logout" />" method="post" >
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							<button class="btn btn-link" type="submit">Logout</button>

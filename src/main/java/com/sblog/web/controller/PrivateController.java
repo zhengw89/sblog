@@ -8,6 +8,10 @@ import com.sblog.beans.User;
 
 public abstract class PrivateController extends BaseController {
 
+	protected User getCurrentUser(){
+		return (User)this.getCurrent().getDetails();
+	}
+	
 	protected UsernamePasswordAuthenticationToken getCurrent() {
 		return (UsernamePasswordAuthenticationToken)SecurityContextHolder.getContext().getAuthentication();
 	}
@@ -22,7 +26,7 @@ public abstract class PrivateController extends BaseController {
 	}
 	
 	protected ModelAndView setAuthentication(ModelAndView mv) {
-		User user = (User)this.getCurrent().getDetails();
+		User user = this.getCurrentUser();
 		mv.addObject("userDisplayName", user.getDisplayName());
 		return mv;
 	}

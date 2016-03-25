@@ -1,5 +1,8 @@
 package com.sblog.repositories;
 
+import java.util.Date;
+
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
@@ -23,5 +26,16 @@ public class UserRepository extends BaseRepository<User> implements IUserReposit
 
 	public User getById(String id) {
 		return super.getByKey(id);
+	}
+
+	public boolean update(String id, String password, Date updateTime) {
+		
+		Query query = super.createHibernateQuery("update User set password = :password, updateTime = :updateTime where id = :id");
+		query.setParameter("password", password);
+		query.setParameter("updateTime", updateTime);
+		query.setParameter("id", id);
+		query.executeUpdate();
+		
+		return true;
 	}
 }
