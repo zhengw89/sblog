@@ -12,6 +12,7 @@
 <body>
 	<spring:url value="/backyard/post/create" var="createPostActionUrl"/>
 	<form:form method="POST" action="${createPostActionUrl}" class="form-horizontal" commandName="post">
+		
 		<div class="form-group">
 			<div class="col-sm-2 control-label">
 				<label>Title</label>
@@ -21,6 +22,7 @@
 				<form:errors path="title" cssClass="error"/>
 			</div>
 		</div>
+		
 		<div class="form-group">
 			<div class="col-sm-2 control-label">
 				<label>Content</label>
@@ -31,16 +33,22 @@
 				<form:errors path="content" cssClass="error"/>
 			</div>
 		</div>
+		
 		<div class="form-group">
 			<div class="col-sm-2 control-label">
 				<label>Tags</label>
 			</div>
-			<div class="col-sm-10">
+			<div class="col-sm-10 control-label" style="text-align: left;">
 				<c:forEach items="${tags}" var="tag">
-					<form:checkbox path="tags" value="${tag.id}"></form:checkbox>${tag.name}
+					<div class="col-sm-2">
+						<label for="${tag.id}">${tag.name}</label>
+						<form:checkbox path="tags" value="${tag.id}" id="${tag.id}"></form:checkbox>
+					</div>
+					<%-- <form:checkbox path="tags" value="${tag.id}"></form:checkbox>${tag.name} --%>
 				</c:forEach>
 			</div>
 		</div>
+		
 		<div class="form-group">
             <div class="col-sm-2 control-label">
                 <button class="btn btn-primary" type="submit">Create</button>

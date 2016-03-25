@@ -1,0 +1,13 @@
+/* Navigation */
+.navbar-brand small {
+  font-size:12px;
+}
+
+.logout-form {
+	height: 50px;
+}
+
+.logout-form button {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}

@@ -35,17 +35,19 @@
 			<div class="col-sm-2 control-label">
 				<label>Tags</label>
 			</div>
-			<div class="col-sm-10">
+			<div class="col-sm-10 control-label" style="text-align: left;">
 				<c:forEach items="${post.tagStatus}" var="tagStatus">
-					<c:choose>
-					    <c:when test="${tagStatus.isChecked}">
-					        <form:checkbox path="tags" id="${tagStatus.tagId}" value="${tagStatus.tagId}" checked="checked"></form:checkbox>${tagStatus.tagName}
-					    </c:when>
-					    <c:otherwise>
-					        <form:checkbox path="tags" id="${tagStatus.tagId}" value="${tagStatus.tagId}"></form:checkbox>${tagStatus.tagName}
-					    </c:otherwise>
-					</c:choose>
-					
+					<div class="col-sm-2">
+						<label for="${tagStatus.tagId}">${tagStatus.tagName}</label>
+						<c:choose>
+						    <c:when test="${tagStatus.isChecked}">
+						        <form:checkbox path="tags" id="${tagStatus.tagId}" value="${tagStatus.tagId}" checked="checked"></form:checkbox>
+						    </c:when>
+						    <c:otherwise>
+						        <form:checkbox path="tags" id="${tagStatus.tagId}" value="${tagStatus.tagId}"></form:checkbox>
+						    </c:otherwise>
+						</c:choose>
+					</div>
 				</c:forEach>
 			</div>
 		</div>

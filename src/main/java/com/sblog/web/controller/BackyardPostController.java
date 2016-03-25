@@ -56,6 +56,7 @@ public class BackyardPostController extends PrivateController {
 		if(bindingResult.hasErrors()){
 			super.setAuthentication(mv);
 			mv.setViewName("/backyard/createPost");
+			mv.addObject("tags", this.tagService.getAllTags());
 		} else {
 			this.postService.createPost(model.getTitle(), model.getContent(), model.getTags());
 			mv.setViewName("redirect:/backyard/posts");
